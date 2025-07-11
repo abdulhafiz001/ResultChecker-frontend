@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import StudentSidebar from '../components/sidebars/StudentSidebar';
+import AdminSidebar from '../components/sidebars/AdminSidebar';
 import { colors } from '../constants/colors';
 
-function AppLayout() {
+function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
-      <StudentSidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+      <AdminSidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
 
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
         {/* Top navigation */}
@@ -49,7 +49,7 @@ function AppLayout() {
                   <input
                     id="search-field"
                     className="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
-                    placeholder="Search results..."
+                    placeholder="Search..."
                     type="search"
                     name="search"
                   />
@@ -85,4 +85,4 @@ function AppLayout() {
   );
 }
 
-export default AppLayout;
+export default AdminLayout;
