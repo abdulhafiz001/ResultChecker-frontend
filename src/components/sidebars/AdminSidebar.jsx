@@ -103,8 +103,9 @@ const AdminSidebar = ({ isOpen, setIsOpen }) => {
         }`}
       >
         <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200">
+          <img src="/termresult logo.png" alt="TermResult Logo" className="h-10 w-auto mr-2" />
           <h1 className="text-xl font-bold text-gray-900">
-            <span style={{ color: colors.primary }}>NA</span> Academy
+            TermResult
           </h1>
         </div>
 

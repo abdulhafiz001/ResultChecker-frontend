@@ -102,10 +102,10 @@ const SuperAdminSidebar = ({ isOpen, setIsOpen }) => {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-center h-16 px-4 border-b border-gray-700">
-          <h1 className="text-xl font-bold text-white">
-            <span style={{ color: colors.primary }}>EduManage</span>
-            <span className="text-gray-300 text-sm ml-2">Control</span>
+        <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200">
+          <img src="/termresult logo.png" alt="TermResult Logo" className="h-10 w-auto mr-2" />
+          <h1 className="text-xl font-bold text-gray-900">
+            TermResult
           </h1>
         </div>
 

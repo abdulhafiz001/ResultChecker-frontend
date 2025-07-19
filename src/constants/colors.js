@@ -1,8 +1,8 @@
-// NA Academy Color Palette
+// Color Palette
 export const colors = {
   // Primary Colors
-  primary: '#1eb1d5',
-  primaryDark: '#0d738e',
+  primary: '#3b82f6', // lighter blue
+  primaryDark: '#1e293b', // dark navy blue
   
   // Semantic Colors
   success: '#10b981',
@@ -51,8 +51,8 @@ export const colors = {
 
 // Tailwind CSS custom color configuration
 export const tailwindColors = {
-  'na-primary': '#1eb1d5',
-  'na-primary-dark': '#0d738e',
+  'na-primary': '#3b82f6',
+  'na-primary-dark': '#1e293b',
   'na-success': '#10b981',
   'na-error': '#ef4444',
   'na-warning': '#f59e0b',

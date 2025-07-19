@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import AdminSidebar from '../components/sidebars/AdminSidebar';
 import { colors } from '../constants/colors';
+import Footer from '../components/Footer';
 
 function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -80,6 +81,7 @@ function AdminLayout() {
             </div>
           </div>
         </main>
+        <Footer />
       </div>
     </div>
   );

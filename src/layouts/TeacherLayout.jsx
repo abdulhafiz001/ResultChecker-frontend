@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import TeacherSidebar from '../components/sidebars/TeacherSidebar';
 import { colors } from '../constants/colors';
+import Footer from '../components/Footer';
 
 function TeacherLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -100,6 +101,7 @@ function TeacherLayout() {
             </div>
           </div>
         </main>
+        <Footer />
       </div>
     </div>
   );

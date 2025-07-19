@@ -50,6 +50,9 @@ const AdminLogin = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
+        <div className="flex flex-col items-center justify-center mb-6">
+          <img src="/termresult logo png.png" alt="TermResult Logo" className="h-40 w-auto mb-2" />
+        </div>
         <div>
           <div className="mx-auto h-12 w-12 flex items-center justify-center rounded-full" style={{ backgroundColor: colors.primary }}>
             <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">

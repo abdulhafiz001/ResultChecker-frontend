@@ -88,7 +88,7 @@ const AdminDashboard = () => {
             Admin Dashboard
           </h2>
           <p className="mt-1 text-sm text-gray-500">
-            Welcome back! Here's what's happening at NA Academy today.
+            Welcome back! Here's what's happening at TermResult today.
           </p>
         </div>
         <div className="mt-4 flex md:mt-0 md:ml-4">

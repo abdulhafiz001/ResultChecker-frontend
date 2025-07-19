@@ -8,8 +8,7 @@ const StudentDashboard = () => {
     class: "JSS 3A",
     session: "2023/2024",
     term: "Second Term",
-    formTeacher: "Mrs. Johnson",
-    nextClass: "Mathematics - 10:00 AM"
+    formTeacher: "Mrs. Johnson"
   };
 
   const recentResults = [
@@ -98,26 +97,26 @@ const StudentDashboard = () => {
       description: 'Update your personal information'
     },
     {
-      name: 'Attendance',
-      href: '/student/attendance',
+      name: 'My Subjects',
+      href: '/student/subjects',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-        </svg>
-      ),
-      color: '#F59E0B',
-      description: 'View your attendance record'
-    },
-    {
-      name: 'Timetable',
-      href: '/student/timetable',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0V6a2 2 0 012-2h4a2 2 0 012 2v1m-6 0h6m-6 0l-.5 8.5A2 2 0 0013.5 21h-3A2 2 0 018.5 15.5L8 7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       ),
       color: '#8B5CF6',
-      description: 'Check your class schedule'
+      description: 'View your academic subjects'
+    },
+    {
+      name: 'Sign Out',
+      href: '/',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg>
+      ),
+      color: '#EF4444',
+      description: 'Sign out of your account'
     }
   ];
 
@@ -137,32 +136,37 @@ const StudentDashboard = () => {
 
   return (
     <div>
+      {/* School Logo Header */}
+      <div className="bg-white shadow rounded-lg mb-6">
+        <div className="px-4 py-8 sm:px-6 text-center">
+          <img 
+            src="/termresult logo png.png" 
+            alt="TermResult Logo" 
+            className="h-32 w-auto mx-auto mb-4"
+          />
+          <h2 className="text-2xl font-bold text-gray-900">TermResult International School</h2>
+          <p className="text-lg text-gray-600 mt-2">Student Portal Dashboard</p>
+        </div>
+      </div>
+
       {/* Welcome Section */}
       <div className="bg-white shadow rounded-lg mb-8">
         <div className="px-4 py-5 sm:p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="h-16 w-16 rounded-full flex items-center justify-center text-white text-2xl font-bold" style={{ backgroundColor: colors.primary }}>
-                  {studentInfo.name.split(' ').map(n => n[0]).join('')}
-                </div>
-              </div>
-              <div className="ml-6">
-                <h1 className="text-2xl font-bold text-gray-900">
-                  Welcome back, {studentInfo.name}!
-                </h1>
-                <p className="text-sm text-gray-500">
-                  {studentInfo.class} • {studentInfo.admissionNumber} • {studentInfo.session} ({studentInfo.term})
-                </p>
-                <p className="text-sm font-medium text-indigo-600 mt-1">
-                  Form Teacher: {studentInfo.formTeacher}
-                </p>
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <div className="h-16 w-16 rounded-full flex items-center justify-center text-white text-2xl font-bold" style={{ backgroundColor: colors.primary }}>
+                {studentInfo.name.split(' ').map(n => n[0]).join('')}
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-sm font-medium text-gray-900">Next Class</p>
-              <p className="text-lg font-bold" style={{ color: colors.primary }}>
-                {studentInfo.nextClass}
+            <div className="ml-6">
+              <h1 className="text-2xl font-bold text-gray-900">
+                Welcome back, {studentInfo.name}!
+              </h1>
+              <p className="text-sm text-gray-500">
+                {studentInfo.class} • {studentInfo.admissionNumber} • {studentInfo.session} ({studentInfo.term})
+              </p>
+              <p className="text-sm font-medium text-indigo-600 mt-1">
+                Form Teacher: {studentInfo.formTeacher}
               </p>
             </div>
           </div>

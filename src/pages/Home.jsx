@@ -1,8 +1,11 @@
 
 import { Link } from "react-router-dom";
 import { colors } from "../constants/colors";
+import Footer from '../components/Footer';
+import { useState } from "react";
 
 const Home = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Navigation Header */}
@@ -10,14 +13,28 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="text-3xl font-bold text-gray-900">
-                  <span style={{ color: colors.primary }}>EduManage</span>
-                  <span className="text-gray-600 text-lg ml-2">Pro</span>
-                </h1>
+              <div className="flex-shrink-0 flex items-center justify-center">
+                <img src="/termresult logo png.png" alt="TermResult Logo" className="h-40 w-auto mx-auto" />
               </div>
             </div>
-            <div className="flex items-center space-x-6">
+            {/* Hamburger menu button for mobile */}
+            <div className="sm:hidden">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                aria-expanded={menuOpen}
+              >
+                <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                  {menuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
+            {/* Nav links */}
+            <div className="hidden sm:flex items-center space-x-6">
               <Link
                 to="/school/login"
                 className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
@@ -39,6 +56,33 @@ const Home = () => {
               </Link>
             </div>
           </div>
+          {/* Mobile menu dropdown */}
+          {menuOpen && (
+            <div className="sm:hidden mt-2 flex flex-col items-center space-y-2 bg-white rounded shadow-lg py-4">
+              <Link
+                to="/school/login"
+                className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 w-full text-center"
+                onClick={() => setMenuOpen(false)}
+              >
+                School Login
+              </Link>
+              <Link
+                to="/student/login"
+                className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 w-full text-center"
+                onClick={() => setMenuOpen(false)}
+              >
+                Student Login
+              </Link>
+              <Link
+                to="/super-admin/login"
+                className="text-white px-6 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:opacity-90 w-full text-center"
+                style={{ backgroundColor: colors.primary }}
+                onClick={() => setMenuOpen(false)}
+              >
+                Super Admin
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -55,7 +99,7 @@ const Home = () => {
                   </span>
                 </h1>
                 <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  The complete school management platform for Nigerian secondary schools.
+                  The complete school management platform for Nigerian Primary & secondary schools.
                   Manage students, teachers, classes, and results all in one secure platform.
                   Students can access their results from anywhere, anytime.
                 </p>
@@ -66,7 +110,7 @@ const Home = () => {
                       className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white md:py-4 md:text-lg md:px-12 transition-all duration-200 hover:opacity-90 hover:shadow-xl"
                       style={{ backgroundColor: colors.primary }}
                     >
-                      🏫 Register Your School
+                      Register Your School
                     </Link>
                   </div>
                   <div className="mt-3 sm:mt-0 sm:ml-3">
@@ -74,7 +118,7 @@ const Home = () => {
                       to="/student/login"
                       className="w-full flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-12 transition-all duration-200 hover:border-gray-400"
                     >
-                      🎓 Student Portal
+                       Student Portal
                     </Link>
                   </div>
                 </div>
@@ -83,13 +127,7 @@ const Home = () => {
           </div>
         </div>
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <div className="h-56 w-full bg-gradient-to-r from-indigo-500 to-purple-600 sm:h-72 md:h-96 lg:w-full lg:h-full flex items-center justify-center">
-            <div className="text-center text-white">
-              <div className="text-6xl mb-4">🏫</div>
-              <h3 className="text-2xl font-bold mb-2">School Management</h3>
-              <p className="text-lg opacity-90">Made Simple & Secure</p>
-            </div>
-          </div>
+          <img src="/young-person-taking-notes-textbook-paper-with-pen-looking-modern-laptop-woman-writing-information-notebook-files-doing-remote-work-adult-working-from-home-business.jpg" alt="Teacher using computer" className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" />
         </div>
       </div>
 
@@ -252,7 +290,7 @@ const Home = () => {
           <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             <span className="block">Ready to transform your school?</span>
             <span className="block text-indigo-200">
-              Join hundreds of schools already using EduManage Pro.
+              Join other schools already using TermResult Today
             </span>
           </h2>
           <div className="mt-8 flex flex-col sm:flex-row lg:mt-0 lg:flex-shrink-0">
@@ -264,33 +302,13 @@ const Home = () => {
                 🏫 Register Your School
               </Link>
             </div>
-            <div className="mt-3 sm:mt-0 sm:ml-3 inline-flex rounded-md shadow-lg">
-              <Link
-                to="/student/login"
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-indigo-600 transition-all duration-200"
-              >
-                🎓 Student Login
-              </Link>
-            </div>
+            
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-          <div className="flex justify-center space-x-6 md:order-2">
-            <p className="text-gray-400 text-sm">
-              © 2024 EduManage Pro. All rights reserved.
-            </p>
-          </div>
-          <div className="mt-8 md:mt-0 md:order-1">
-            <p className="text-center text-base text-gray-400">
-              Empowering Nigerian education through innovative technology.
-            </p>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 };

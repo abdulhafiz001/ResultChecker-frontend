@@ -500,6 +500,10 @@ const SchoolRegister = () => {
         </p>
       </div>
 
+      <div className="flex flex-col items-center justify-center mb-6">
+        <img src="/termresult logo png.png" alt="TermResult Logo" className="h-40 w-auto mb-2" />
+      </div>
+
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           {/* Progress Steps */}

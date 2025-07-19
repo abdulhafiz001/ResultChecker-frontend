@@ -67,13 +67,18 @@ const SchoolLogin = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="flex justify-start mb-2">
+          <Link to="/" className="inline-flex items-center text-blue-600 hover:underline text-sm font-medium">
+            <svg className="h-5 w-5 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Home
+          </Link>
+        </div>
         <Link to="/" className="flex justify-center">
-          <h1 className="text-3xl font-bold text-gray-900">
-            <span style={{ color: colors.primary }}>EduManage</span>
-            <span className="text-gray-600 text-lg ml-2">Pro</span>
-          </h1>
+          <img src="/termresult logo png.png" alt="TermResult Logo" className="h-40 w-auto mx-auto -mb-6" />
         </Link>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 className="text-center text-3xl font-extrabold text-gray-900 -mt-4">
           School Administrator Login
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">

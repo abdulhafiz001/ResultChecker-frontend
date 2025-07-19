@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+/* Print styles to hide sidebar and navigation */
+@media print {
+  /* Hide sidebar */
+  nav, .sidebar, [class*="sidebar"], [class*="Sidebar"] {
+    display: none !important;
+  }
+  
+  /* Hide navigation elements */
+  .lg\:static, .lg\:inset-0, .fixed {
+    position: static !important;
+  }
+  
+  /* Make main content full width */
+  main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Hide download buttons during print */
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Optimize for print */
+  body {
+    background: white !important;
+  }
+  
+  /* Ensure good print layout */
+  .bg-gray-50, .bg-blue-50, .bg-indigo-100 {
+    background: white !important;
+  }
+}

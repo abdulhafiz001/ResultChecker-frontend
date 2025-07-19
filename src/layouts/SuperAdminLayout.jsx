@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import SuperAdminSidebar from '../components/sidebars/SuperAdminSidebar';
 import { colors } from '../constants/colors';
+import Footer from '../components/Footer';
 
 function SuperAdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -106,6 +107,7 @@ function SuperAdminLayout() {
             </div>
           </div>
         </main>
+        <Footer />
       </div>
     </div>
   );

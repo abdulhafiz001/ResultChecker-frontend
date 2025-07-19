@@ -44,15 +44,6 @@ const StudentSidebar = ({ isOpen, setIsOpen }) => {
       ),
     },
     {
-      name: 'Attendance',
-      href: '/student/attendance',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0V6a2 2 0 012-2h4a2 2 0 012 2v1m-6 0h6m-6 0l-.5 8.5A2 2 0 0013.5 21h-3A2 2 0 018.5 15.5L8 7z" />
-        </svg>
-      ),
-    },
-    {
       name: 'Profile',
       href: '/student/profile',
       icon: (
@@ -62,11 +53,11 @@ const StudentSidebar = ({ isOpen, setIsOpen }) => {
       ),
     },
     {
-      name: 'Notifications',
-      href: '/student/notifications',
+      name: 'Sign Out',
+      href: '/',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM4 19h6v-2H4v2zM4 15h8v-2H4v2zM4 11h8V9H4v2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
         </svg>
       ),
     },
@@ -92,10 +83,8 @@ const StudentSidebar = ({ isOpen, setIsOpen }) => {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200">
-          <h1 className="text-xl font-bold text-gray-900">
-            <span style={{ color: colors.primary }}>NA</span> Academy
-          </h1>
+        <div className="flex items-center justify-center h-24 px-4 border-b border-gray-200">
+          <img src="/termresult logo png.png" alt="TermResult Logo" className="h-32 w-auto" />
         </div>
 
         <nav className="mt-5 px-2">

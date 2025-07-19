@@ -20,6 +20,8 @@ import SuperAdminLogin from './pages/auth/SuperAdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import StudentDashboard from './pages/student/StudentDashboard';
 import StudentResults from './pages/student/StudentResults';
+import StudentProgress from './pages/student/StudentProgress';
+import StudentSubjects from './pages/student/StudentSubjects';
 import StudentProfile from './pages/student/StudentProfile';
 import SchoolDashboard from './pages/school/SchoolDashboard';
 import SchoolSettings from './pages/school/SchoolSettings';
@@ -251,12 +253,16 @@ const router = createBrowserRouter([
         element: <StudentResults />,
       },
       {
-        path: 'profile',
-        element: <StudentProfile />,
+        path: 'progress',
+        element: <StudentProgress />,
       },
       {
-        path: 'attendance',
-        element: <div>Student Attendance Page</div>,
+        path: 'subjects',
+        element: <StudentSubjects />,
+      },
+      {
+        path: 'profile',
+        element: <StudentProfile />,
       },
       {
         path: 'timetable',
@@ -265,30 +271,6 @@ const router = createBrowserRouter([
       {
         path: 'events',
         element: <div>Student Events Page</div>,
-      },
-      {
-        path: 'results',
-        element: <div>My Results Page</div>,
-      },
-      {
-        path: 'progress',
-        element: <div>Academic Progress Page</div>,
-      },
-      {
-        path: 'subjects',
-        element: <div>My Subjects Page</div>,
-      },
-      {
-        path: 'attendance',
-        element: <div>Attendance Page</div>,
-      },
-      {
-        path: 'profile',
-        element: <div>Profile Page</div>,
-      },
-      {
-        path: 'notifications',
-        element: <div>Notifications Page</div>,
       },
     ],
   },

@@ -2,7 +2,7 @@ import { colors } from '../../constants/colors';
 
 const SchoolDashboard = () => {
   const schoolInfo = {
-    name: "Sample Academy",
+    name: "TermResult",
     code: "SA001",
     session: "2023/2024",
     term: "Second Term",
