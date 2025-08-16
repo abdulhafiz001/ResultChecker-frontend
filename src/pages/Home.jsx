@@ -1,90 +1,11 @@
 
 import { Link } from "react-router-dom";
 import { colors } from "../constants/colors";
-import Footer from '../components/Footer';
-import { useState } from "react";
 
 const Home = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Navigation Header */}
-      <nav className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center justify-center">
-                <img src="/termresult logo png.png" alt="TermResult Logo" className="h-40 w-auto mx-auto" />
-              </div>
-            </div>
-            {/* Hamburger menu button for mobile */}
-            <div className="sm:hidden">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-                aria-expanded={menuOpen}
-              >
-                <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                  {menuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
-            </div>
-            {/* Nav links */}
-            <div className="hidden sm:flex items-center space-x-6">
-              <Link
-                to="/school/login"
-                className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                School Login
-              </Link>
-              <Link
-                to="/student/login"
-                className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                Student Login
-              </Link>
-              <Link
-                to="/super-admin/login"
-                className="text-white px-6 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:opacity-90"
-                style={{ backgroundColor: colors.primary }}
-              >
-                Super Admin
-              </Link>
-            </div>
-          </div>
-          {/* Mobile menu dropdown */}
-          {menuOpen && (
-            <div className="sm:hidden mt-2 flex flex-col items-center space-y-2 bg-white rounded shadow-lg py-4">
-              <Link
-                to="/school/login"
-                className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 w-full text-center"
-                onClick={() => setMenuOpen(false)}
-              >
-                School Login
-              </Link>
-              <Link
-                to="/student/login"
-                className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 w-full text-center"
-                onClick={() => setMenuOpen(false)}
-              >
-                Student Login
-              </Link>
-              <Link
-                to="/super-admin/login"
-                className="text-white px-6 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:opacity-90 w-full text-center"
-                style={{ backgroundColor: colors.primary }}
-                onClick={() => setMenuOpen(false)}
-              >
-                Super Admin
-              </Link>
-            </div>
-          )}
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <div className="relative overflow-hidden">
@@ -104,21 +25,13 @@ const Home = () => {
                   Students can access their results from anywhere, anytime.
                 </p>
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                  <div className="rounded-md shadow-lg">
+                  <div className="rounded-md shadow">
                     <Link
                       to="/school/register"
-                      className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white md:py-4 md:text-lg md:px-12 transition-all duration-200 hover:opacity-90 hover:shadow-xl"
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white hover:opacity-90 transition-all duration-200"
                       style={{ backgroundColor: colors.primary }}
                     >
-                      Register Your School
-                    </Link>
-                  </div>
-                  <div className="mt-3 sm:mt-0 sm:ml-3">
-                    <Link
-                      to="/student/login"
-                      className="w-full flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-12 transition-all duration-200 hover:border-gray-400"
-                    >
-                       Student Portal
+                      School Registration
                     </Link>
                   </div>
                 </div>
@@ -128,6 +41,47 @@ const Home = () => {
         </div>
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <img src="/young-person-taking-notes-textbook-paper-with-pen-looking-modern-laptop-woman-writing-information-notebook-files-doing-remote-work-adult-working-from-home-business.jpg" alt="Teacher using computer" className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" />
+        </div>
+      </div>
+
+      {/* YouTube Video Section */}
+      <div className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              See TermResult in Action
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Watch our comprehensive demo video to understand how TermResult transforms school management
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="relative bg-white rounded-lg shadow-2xl overflow-hidden">
+              <div className="aspect-w-16 aspect-h-9">
+                <iframe
+                  className="w-full h-96 md:h-[500px]"
+                  src="https://www.youtube.com/embed/1XMOFv18KqM?si=0csbma5DZnYS_vdN"
+                  title="TermResult Platform Demo"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+            
+            <div className="mt-8 text-center">
+              <p className="text-gray-600 mb-4">
+                Can't watch the video? Check out our <Link to="/features" className="text-blue-600 hover:text-blue-800 font-medium">Features page</Link> for detailed screenshots and information.
+              </p>
+              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span>HD Quality • 5+ minutes</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -293,22 +247,20 @@ const Home = () => {
               Join other schools already using TermResult Today
             </span>
           </h2>
-          <div className="mt-8 flex flex-col sm:flex-row lg:mt-0 lg:flex-shrink-0">
-            <div className="inline-flex rounded-md shadow-lg">
+          <div className="mt-8 flex flex-col sm:flex-row lg:mt-0 lg:mt-0 lg:flex-shrink-0">
+            <div className="rounded-md shadow">
               <Link
                 to="/school/register"
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 transition-all duration-200"
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-all duration-200"
               >
-                🏫 Register Your School
+                School Registration
               </Link>
             </div>
-            
           </div>
         </div>
       </div>
 
-      {/* Footer */}
-      
+      {/* Footer removed - TermResult Official Page */}
     </div>
   );
 };

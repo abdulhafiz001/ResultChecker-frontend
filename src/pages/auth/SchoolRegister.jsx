@@ -4,6 +4,7 @@ import { colors } from '../../constants/colors';
 
 const SchoolRegister = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     // Step 1: Basic Information
     fullName: '',
@@ -20,9 +21,6 @@ const SchoolRegister = () => {
     
     // Step 3: Credentials
     username: '',
-    password: '',
-    confirmPassword: '',
-    schoolCode: '',
     emisCode: '',
     
     // Step 4: School Details
@@ -51,6 +49,14 @@ const SchoolRegister = () => {
     'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara',
     'Lagos', 'Nasarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau',
     'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara'
+  ];
+
+  const schoolTypes = [
+    'Primary School',
+    'Secondary School',
+    'Primary & Secondary School',
+    'Nursery & Primary School',
+    'Nursery, Primary & Secondary School'
   ];
 
   const handleInputChange = (e) => {
@@ -86,12 +92,6 @@ const SchoolRegister = () => {
       case 3:
         if (!formData.username.trim()) newErrors.username = 'Username is required';
         if (formData.username.length < 3) newErrors.username = 'Username must be at least 3 characters';
-        if (!formData.password) newErrors.password = 'Password is required';
-        if (formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
-        if (formData.password !== formData.confirmPassword) {
-          newErrors.confirmPassword = 'Passwords do not match';
-        }
-        if (!formData.schoolCode.trim()) newErrors.schoolCode = 'School code is required';
         break;
       case 4:
         if (!formData.approximateStudents) newErrors.approximateStudents = 'Number of students is required';
@@ -113,13 +113,60 @@ const SchoolRegister = () => {
     setCurrentStep(prev => prev - 1);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateStep(currentStep)) {
-      // TODO: Submit registration data
-      console.log('Registration data:', formData);
-      alert('School registration successful! Redirecting to dashboard...');
-      // Redirect to school dashboard
+      try {
+        // Create email content
+        const emailSubject = 'New School Registration - TermResult';
+        const emailBody = `
+New School Registration Details:
+
+ADMINISTRATOR INFORMATION:
+Full Name: ${formData.fullName}
+
+SCHOOL INFORMATION:
+School Name: ${formData.schoolName}
+School Email: ${formData.schoolEmail || 'Not provided'}
+School Type: ${formData.schoolType}
+Username: ${formData.username}
+
+LOCATION & CONTACT:
+State: ${formData.state}
+LGA: ${formData.lga}
+Address: ${formData.address}
+Phone Number: ${formData.phoneNumber}
+Alternate Phone: ${formData.alternatePhone || 'Not provided'}
+
+SCHOOL DETAILS:
+Approximate Students: ${formData.approximateStudents}
+Approximate Teachers: ${formData.approximateTeachers}
+EMIS Code: ${formData.emisCode || 'Not provided'}
+
+CLASSES AVAILABLE:
+JSS 1: ${formData.hasJSS1 ? 'Yes' : 'No'}
+JSS 2: ${formData.hasJSS2 ? 'Yes' : 'No'}
+JSS 3: ${formData.hasJSS3 ? 'Yes' : 'No'}
+SS 1: ${formData.hasSS1 ? 'Yes' : 'No'}
+SS 2: ${formData.hasSS2 ? 'Yes' : 'No'}
+SS 3: ${formData.hasSS3 ? 'Yes' : 'No'}
+
+Registration submitted on: ${new Date().toLocaleString()}
+        `;
+
+        // Create mailto link
+        const mailtoLink = `mailto:termresult@outlook.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message
+        setIsSubmitted(true);
+        
+      } catch (error) {
+        console.error('Error submitting registration:', error);
+        alert('There was an error submitting your registration. Please try again.');
+      }
     }
   };
 
@@ -193,7 +240,9 @@ const SchoolRegister = () => {
                 onChange={handleInputChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                <option value="secondary">Secondary School</option>
+                {schoolTypes.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -317,61 +366,6 @@ const SchoolRegister = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password *
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                  errors.password ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 focus:ring-indigo-500'
-                }`}
-                placeholder="Enter a strong password"
-              />
-              {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                Confirm Password *
-              </label>
-              <input
-                type="password"
-                name="confirmPassword"
-                id="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                  errors.confirmPassword ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 focus:ring-indigo-500'
-                }`}
-                placeholder="Confirm your password"
-              />
-              {errors.confirmPassword && <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>}
-            </div>
-
-            <div>
-              <label htmlFor="schoolCode" className="block text-sm font-medium text-gray-700">
-                School Code *
-              </label>
-              <input
-                type="text"
-                name="schoolCode"
-                id="schoolCode"
-                value={formData.schoolCode}
-                onChange={handleInputChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                  errors.schoolCode ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 focus:ring-indigo-500'
-                }`}
-                placeholder="Enter your school code"
-              />
-              {errors.schoolCode && <p className="mt-1 text-sm text-red-600">{errors.schoolCode}</p>}
-              <p className="mt-1 text-xs text-gray-500">A unique identifier for your school</p>
-            </div>
-
-            <div>
               <label htmlFor="emisCode" className="block text-sm font-medium text-gray-700">
                 EMIS Code (Optional)
               </label>
@@ -483,25 +477,51 @@ const SchoolRegister = () => {
     }
   };
 
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          <div className="flex flex-col items-center justify-center mb-6">
+            <img src="/termresult logo png.png" alt="TermResult Logo" className="h-40 w-auto mb-4" />
+          </div>
+          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 text-center">
+            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+              <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Registration Submitted Successfully!</h2>
+            <p className="text-gray-600 mb-6">
+              Thank you for registering your school with TermResult. We have opened your email client to send the registration details to our team.
+            </p>
+            <p className="text-gray-600 mb-6">
+              Please send the email to complete your registration. Our team will review your application and contact you within 24-48 hours.
+            </p>
+            <Link
+              to="/"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white transition-all duration-200 hover:opacity-90"
+              style={{ backgroundColor: colors.primary }}
+            >
+              Return to Home
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <Link to="/" className="flex justify-center">
-          <h1 className="text-3xl font-bold text-gray-900">
-            <span style={{ color: colors.primary }}>EduManage</span>
-            <span className="text-gray-600 text-lg ml-2">Pro</span>
-          </h1>
-        </Link>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <div className="flex flex-col items-center justify-center mb-6">
+          <img src="/termresult logo png.png" alt="TermResult Logo" className="h-40 w-auto mb-4" />
+        </div>
+        <h2 className="text-center text-3xl font-extrabold text-gray-900">
           Register Your School
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Join the platform and start managing your school results
         </p>
-      </div>
-
-      <div className="flex flex-col items-center justify-center mb-6">
-        <img src="/termresult logo png.png" alt="TermResult Logo" className="h-40 w-auto mb-2" />
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
@@ -575,29 +595,6 @@ const SchoolRegister = () => {
               )}
             </div>
           </form>
-
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
-                  Already have an account?
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-6 text-center">
-              <Link
-                to="/school/login"
-                className="font-medium hover:underline"
-                style={{ color: colors.primary }}
-              >
-                Sign in to your school account
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </div>
