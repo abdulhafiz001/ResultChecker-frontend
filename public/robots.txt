@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://termresult.com/sitemap.xml
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1
+
+# Allow all important pages
+Allow: /benefits
+Allow: /features
+Allow: /pricing
+Allow: /resources
+Allow: /refer-earn
+Allow: /register
+Allow: /school/register
+
+# Disallow admin areas (if you have any)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/

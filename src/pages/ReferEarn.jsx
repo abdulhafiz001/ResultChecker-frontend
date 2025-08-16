@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ReferEarn = () => {
+  const [copySuccess, setCopySuccess] = useState(false);
+  const referralLink = "https://termresult.com/school/register";
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(referralLink);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000); // Reset after 2 seconds
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = referralLink;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -59,17 +80,29 @@ const ReferEarn = () => {
             <div className="flex items-center space-x-4 mb-6">
               <input
                 type="text"
-                value="https://termresult.com/school/register"
+                value={referralLink}
                 readOnly
                 className="flex-1 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-600"
               />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                Copy
+              <button 
+                onClick={handleCopy}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                  copySuccess 
+                    ? 'bg-green-600 text-white' 
+                    : 'bg-blue-600 hover:bg-blue-700 text-white'
+                }`}
+              >
+                {copySuccess ? 'Copied!' : 'Copy'}
               </button>
             </div>
             <p className="text-sm text-gray-500 text-center">
               Share this link with others to start earning rewards
             </p>
+            {copySuccess && (
+              <p className="text-sm text-green-600 text-center mt-2">
+                ✓ Link copied to clipboard!
+              </p>
+            )}
           </div>
         </div>
 
